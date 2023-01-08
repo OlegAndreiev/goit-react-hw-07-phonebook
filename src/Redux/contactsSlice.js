@@ -32,9 +32,9 @@ export const contactReducer = contactsSlice.reducer;
 export const filterReducer = filterSlice.reducer;
 
 export const contactsApi = createApi({
-  reducerPath: 'contacts',
+  reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://63b72d1f4f17e3a931cd3219.mockapi.io',
+    baseUrl: 'https://63b72d1f4f17e3a931cd3219.mockapi.io/',
   }),
   endpoints: builder => ({
     getContacts: builder.query({
