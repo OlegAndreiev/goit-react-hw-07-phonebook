@@ -1,8 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import css from './SectionContacts.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeContact, useGetContactsQuery } from '../../Redux/contactsSlice';
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
+import {
+  // removeContact,
+  useGetContactsQuery,
+} from '../../Redux/contactsSlice';
 import { ContactsListItem } from './ContactsListItem';
 import Loader from '../Loader/Loader';
 

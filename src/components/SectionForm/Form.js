@@ -10,10 +10,11 @@ import {
 } from '../../Redux/contactsSlice';
 
 export default function Form() {
+  // eslint-disable-next-line no-unused-vars
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const { data: contacts, isFetching } = useGetContactsQuery();
+  const { data: contacts } = useGetContactsQuery();
   const [addContact, { isLoading: isAdding }] = useAddContactMutation();
 
   const handleInputChangeName = event => {
@@ -27,7 +28,6 @@ export default function Form() {
     setNumber(value);
   };
 
-  ////////////////RTK Query////////////////
   const handleSubmit = event => {
     event.preventDefault();
 
