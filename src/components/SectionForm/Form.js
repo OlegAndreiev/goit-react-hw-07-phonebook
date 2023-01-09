@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './SectionForm.module.css';
+import Loader from '../Loader/Loader';
+import {
+  // addContact,
+  useGetContactsQuery,
+  useAddContactMutation,
+} from '../../Redux/contactsSlice';
 
-export default function Form({ onSubmit }) {
+export default function Form() {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const { data: contacts, isFetching } = useGetContactsQuery();
+  const [addContact, { isLoading: isAdding }] = useAddContactMutation();
 
   const handleInputChangeName = event => {
     const { value } = event.currentTarget;
@@ -19,11 +27,24 @@ export default function Form({ onSubmit }) {
     setNumber(value);
   };
 
+  ////////////////RTK Query////////////////
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit({ id, name, number });
+
+    contacts.find(contact => contact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : addContact({
+          name: event.currentTarget.elements.name.value,
+          phone: event.currentTarget.elements.number.value,
+        });
     reset();
   };
+
+  //  const handleSubmit = event => {
+  //    event.preventDefault();
+  //    onSubmit({ id, name, number });
+  //    reset();
+  //  };
 
   const reset = () => {
     setId('');
@@ -62,12 +83,12 @@ export default function Form({ onSubmit }) {
         </label>
       </div>
       <button className={css.formButton} type="submit">
-        Add contact
+        {isAdding ? <Loader /> : 'Add contact'}
       </button>
     </form>
   );
 }
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };

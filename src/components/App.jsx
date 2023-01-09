@@ -4,26 +4,26 @@ import SectionForm from './SectionForm/SectionForm';
 import SectionContacts from './SectionContacts/SectionContacts';
 import ContactList from './SectionContacts/ContactsList';
 import Filter from './SectionContacts/Filter';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../Redux/contactsSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addContact } from '../Redux/contactsSlice';
 
 export default function App() {
-  const dispatch = useDispatch();
-  const allContacts = useSelector(state => state.contacts);
+  // const dispatch = useDispatch();
+  // const allContacts = useSelector(state => state.contacts);
 
-  const formSubmitHandler = data => {
-    const { id, name, number } = data;
+  // const formSubmitHandler = data => {
+  //   const { id, name, number } = data;
 
-    allContacts.find(contact => contact.name === name)
-      ? alert(`${name} is already in contacts`)
-      : dispatch(
-          addContact({
-            id: id,
-            name: name,
-            number: number,
-          })
-        );
-  };
+  //   allContacts.find(contact => contact.name === name)
+  //     ? alert(`${name} is already in contacts`)
+  //     : dispatch(
+  //         addContact({
+  //           id: id,
+  //           name: name,
+  //           number: number,
+  //         })
+  //       );
+  // };
 
   return (
     <div
@@ -37,7 +37,7 @@ export default function App() {
       }}
     >
       <SectionForm title="Phonebook">
-        <Form onSubmit={formSubmitHandler} />
+        <Form />
       </SectionForm>
       <SectionContacts title="Contacts">
         <Filter />
