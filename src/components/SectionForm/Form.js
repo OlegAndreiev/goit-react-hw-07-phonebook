@@ -5,7 +5,7 @@ import css from './SectionForm.module.css';
 import Loader from '../Loader/Loader';
 import {
   // addContact,
-  useGetContactsQuery,
+  useFetchContactsQuery,
   useAddContactMutation,
 } from '../../Redux/contactsSlice';
 
@@ -14,7 +14,7 @@ export default function Form() {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const { data: contacts } = useGetContactsQuery();
+  const { data: contacts } = useFetchContactsQuery();
   const [addContact, { isLoading: isAdding }] = useAddContactMutation();
 
   const handleInputChangeName = event => {

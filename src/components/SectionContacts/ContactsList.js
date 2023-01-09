@@ -7,13 +7,13 @@ import {
 } from 'react-redux';
 import {
   // removeContact,
-  useGetContactsQuery,
+  useFetchContactsQuery,
 } from '../../Redux/contactsSlice';
 import { ContactsListItem } from './ContactsListItem';
 import Loader from '../Loader/Loader';
 
 const ContactsList = () => {
-  const { data: contacts, isFetching } = useGetContactsQuery();
+  const { data: contacts, isFetching } = useFetchContactsQuery();
   const [filteredContacts, setFilteredContacts] = useState([]);
   // console.log(deleteContact);
   // const dispatch = useDispatch();
